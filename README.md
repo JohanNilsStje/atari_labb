@@ -23,12 +23,12 @@ Follow these steps to set up the project:
 ```bash
 git clone https://github.com/JohanNilsStje/atari_labb.git
 cd atari_labb
-
+## 2. Setup virtual enviorment
 python -m venv .venv
 .venv\Scripts\activate
 
-
+## 3. Install libraries
 pip install -r requirements.txt
 
-
+## 4. Run the code
 python train.py
