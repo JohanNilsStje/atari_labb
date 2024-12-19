@@ -31,8 +31,12 @@ steps_done = 0
 try:
     policy_net.load_state_dict(torch.load(PRETRAINED_MODEL_PATH, map_location=device))
     print(f"Loaded pretrained model from {PRETRAINED_MODEL_PATH}")
-except NameError:
-    print(f"No pretrained model found at {PRETRAINED_MODEL_PATH}. Starting training from scratch.")
+except FileNotFoundError:
+    print(f"No pretrained model found at {PRETRAINED_MODEL_PATH}. Initializing a new model from scratch.")
+    # Reset model weights if needed (policy_net already initialized with random weights)
+
+# Ensure the target network is a copy of the policy network
+target_net.load_state_dict(policy_net.state_dict())
 
 # Training loop
 for episode in range(start_episode, start_episode + NUM_EPISODES):

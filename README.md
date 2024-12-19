@@ -29,7 +29,8 @@ cd atari_labb
 python -m venv .venv
 .venv\Scripts\activate
 
-3. Install libraries
+3. Install requirments
+
 pip install -r requirements.txt
 
 4. Run the code
