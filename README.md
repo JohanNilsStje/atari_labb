@@ -39,7 +39,7 @@ This project implements a Deep Q-Learning (DQN) algorithm to train an agent to p
 ### Prerequisites
 - Python 3.8 or later
 - `pip` for dependency management
-- CUDA 11.8
+- CUDA 12.7
 
 ### Steps
 1. **Clone the Repository**:
