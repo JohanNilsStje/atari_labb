@@ -22,14 +22,14 @@ This project implements a Deep Q-Learning (DQN) algorithm to train an agent to p
 
 ## 3. **Repository Structure**
 
-├── train.py # Script to train the DQN model 
-├── test_model.py # Script to evaluate the trained model 
-├── utils.py # Helper functions and classes 
-├── config.py # Configuration parameters 
-├── requirements.txt # Python dependencies 
-├── models/ # Directory for saved models 
-├── runs/ # TensorBoard logs 
-└── README.md # Project documentation
+├── train.py # Script to train the DQN model <br>
+├── test_model.py # Script to evaluate the trained model <br>
+├── utils.py # Helper functions and classes <br>
+├── config.py # Configuration parameters <br>
+├── requirements.txt # Python dependencies <br>
+├── models/ # Directory for saved models <br>
+├── runs/ # TensorBoard logs <br>
+└── README.md # Project documentation <br>
 
 
 ---
