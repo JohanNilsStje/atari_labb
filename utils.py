@@ -30,31 +30,46 @@ class DQNNetwork(nn.Module):
 
 
 class ReplayBuffer:
-    def __init__(self, capacity):
+    def __init__(self, capacity, device):
         self.buffer = deque(maxlen=capacity)
+        self.device = device  # Store the device for later use
 
     def push(self, state, action, reward, next_state, done):
+        # Ensure states are tensors with consistent shapes
+        state = torch.tensor(state, dtype=torch.float32)
+        next_state = torch.tensor(next_state, dtype=torch.float32)
+
+        # Debug logging for shape mismatches
+        if state.shape != next_state.shape:
+            print(f"Shape mismatch: state {state.shape}, next_state {next_state.shape}")
+
+        # Add the transition to the buffer
         self.buffer.append((
-            torch.tensor(state, dtype=torch.float32),
+            state,
             torch.tensor(action, dtype=torch.int64),
             torch.tensor(reward, dtype=torch.float32),
-            torch.tensor(next_state, dtype=torch.float32),
+            next_state,
             torch.tensor(done, dtype=torch.float32),
         ))
 
     def sample(self, batch_size):
+        # Sample a batch of transitions
         batch = random.sample(self.buffer, batch_size)
         state, action, reward, next_state, done = zip(*batch)
+
+        # Stack tensors and move them to the correct device
         return (
-            torch.stack(state),
-            torch.stack(action),
-            torch.stack(reward),
-            torch.stack(next_state),
-            torch.stack(done),
+            torch.stack(state).to(self.device),
+            torch.stack(action).to(self.device),
+            torch.stack(reward).to(self.device),
+            torch.stack(next_state).to(self.device),
+            torch.stack(done).to(self.device),
         )
 
     def __len__(self):
         return len(self.buffer)
+
+
 
 
 class AddChannelDimensionWrapper(gym.ObservationWrapper):
