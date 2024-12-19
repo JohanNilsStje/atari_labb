@@ -12,3 +12,23 @@ requirments.txt - De biblotek som behövs för att köra koden.
 
 Andra requirments
 CUDA 11.8 - Rekomenderas för GPU använding
+
+
+# Setup Instructions
+
+Follow these steps to set up the project:
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/JohanNilsStje/atari_labb.git
+cd atari_labb
+
+python -m venv .venv
+.venv\Scripts\activate
+
+
+pip install -r requirements.txt
+
+
+python train.py
